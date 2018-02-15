@@ -119,7 +119,7 @@
           xhr:req
         }), _open.apply(req, arguments);
       };
-    }, _XMLHttpRequest = window.XMLHttpRequest, window.XMLHttpRequest = function(flags) {
+    }, _XMLHttpRequest = window.XMLHttpRequest, window.XMLHttpRequest_ = function(flags) {
       var _overrideMimeType, _setRequestHeader, req;
       return req = new _XMLHttpRequest(flags), monitorXHR(req, flags), _setRequestHeader = req.setRequestHeader, 
       req.headers = {}, req.setRequestHeader = function(name, value) {
@@ -127,11 +127,11 @@
       }, _overrideMimeType = req.overrideMimeType, req.overrideMimeType = function(type) {
         return req.mimeType = type, _overrideMimeType.call(req, type);
       }, req;
-    }, extendNative(window.XMLHttpRequest, _XMLHttpRequest), null != window.XDomainRequest) return _XDomainRequest = window.XDomainRequest, 
+    }, extendNative(window.XMLHttpRequest_, _XMLHttpRequest), null != window.XDomainRequest) return _XDomainRequest = window.XDomainRequest, 
     window.XDomainRequest = function() {
       var req;
       return req = new _XDomainRequest(), monitorXHR(req), req;
-    }, extendNative(window.XDomainRequest, _XDomainRequest);
+    }, extendNative(window.XDomainRequest_, _XDomainRequest);
   }, init = function() {
     if (Offline.getOption("interceptRequests") && Offline.onXHR(function(arg) {
       var xhr;
